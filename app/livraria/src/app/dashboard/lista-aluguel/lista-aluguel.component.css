@@ -1,0 +1,11 @@
+.linha-livro {
+    margin-bottom: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-color: #ccc;
+}
+
+.margem-botao-devolucao {
+    float:right;
+    margin-bottom:5px;
+}

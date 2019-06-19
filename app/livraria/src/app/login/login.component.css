@@ -1,0 +1,11 @@
+.titulo {
+  text-align: center;
+  margin: 20px; 
+  font-size: 30px;
+  color: #444;
+}
+
+.imagem {
+  max-width: 100%;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,63 @@
+<div class="container margem-container">
+  	<div class="row">
+		<div class="col-md-12">
+			<h2>Detalhes do Livro</h2>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-4">
+			<img src="../../../assets/images/livro.png" alt="{{livro.title}}" style="max-width: 300px;">
+		</div>
+		<div class="col-md-6 offset-md-2">
+			<div class="row">
+				<div class="col-md-4"><span class="label-detalhe-livro">Título:</span></div>
+				<div class="col-md-8">{{livro.title}}</div>
+			</div>
+			<div class="row" *ngIf="livro.author">
+				<div class="col-md-4"><span class="label-detalhe-livro">Autor:</span></div>
+				<div class="col-md-8">{{livro.author}}</div>
+			</div>
+			<div class="row" *ngIf="livro.country">
+				<div class="col-md-4"><span class="label-detalhe-livro">País:</span></div>
+				<div class="col-md-8">{{livro.country}}</div>
+			</div>
+			<div class="row" *ngIf="livro.year">
+				<div class="col-md-4"><span class="label-detalhe-livro">Ano:</span></div>
+				<div class="col-md-8">{{livro.year}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><span class="label-detalhe-livro">Número de Páginas</span></div>
+				<div class="col-md-8">{{livro.pages}}</div>
+			</div>
+			<div class="row" *ngIf="livro.link">
+				<div class="col-md-4"><span class="label-detalhe-livro">Mais informações:</span></div>
+				<div class="col-md-6"><a href="{{livro.link}}" target="_blank">{{livro.title}}</a></div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row" *ngIf="livro.locado">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Este livro está locado</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1"><span class="label-detalhe-livro">Cliente:</span></div>
+				<div class="col-md-3">{{locacao.cliente.nome}}</div>
+				<div class="col-md-1"><span class="label-detalhe-livro">Idade:</span></div>
+				<div class="col-md-3">{{locacao.cliente.idade}}</div>
+				<div class="col-md-1" *ngIf="locacao.dataEntrega"><span class="label-detalhe-livro">Entrega:</span></div>
+				<div class="col-md-3">{{locacao.dataEntrega}}</div>
+			</div>
+			<div class="row">
+					<div class="col-md-1"><span class="label-detalhe-livro">Celular:</span></div>
+					<div class="col-md-3">{{locacao.cliente.celular}}</div>
+					<div class="col-md-1"><span class="label-detalhe-livro">Email:</span></div>
+					<div class="col-md-3">{{locacao.cliente.email}}</div>
+			</div>
+		</div>
+	</div>
+</div>

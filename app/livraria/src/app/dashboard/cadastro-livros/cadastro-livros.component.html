@@ -1,0 +1,99 @@
+<div class="container margem-container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 *ngIf="!livro.id">Cadastro do novo livro</h2>
+			<h2 *ngIf="livro.id">Edição do cadastro de {{ livro.title }}</h2>
+		</div>
+	</div>
+	<hr>
+	<div class="row" [ngSwitch]="controleTela">
+		<div class="container container-cadastro" *ngSwitchCase="cadastroLivrosEnum.FORMULARIO_CADASTRO">
+			<form (ngSubmit)="cadastrarLivro()" #livroForm="ngForm">
+				<div class="form-group row">
+					<label for="title" class="col-sm-1 col-form-label">Título</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="title" name="title" placeholder="Título do livro"
+							[(ngModel)]="livro.title" #title="ngModel" required>
+					</div>
+					<div class="col-sm-2" [hidden]="title.valid || title.pristine" style="color:red;"> Campo obrigatório
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="author" class="col-sm-1 col-form-label">Autor</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" id="author" name="author" placeholder="Autor do livro"
+							[(ngModel)]="livro.author" #author="ngModel">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="country" class="col-sm-1 col-form-label">País</label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="country" name="country" placeholder="País de origem"
+							[(ngModel)]="livro.country" #country="ngModel">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="link" class="col-sm-1 col-form-label">link</label>
+					<div class="col-sm-5">
+						<input type="text" class="form-control" id="link" name="link"
+							placeholder="Link da página de referência" [(ngModel)]="livro.link" #link="ngModel">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="year" class="col-sm-1 col-form-label">Ano</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="year" name="year" placeholder="Ano lançamento"
+							[(ngModel)]="livro.year" #year="ngModel">
+					</div>
+
+				</div>
+				<div class="form-group row">
+					<label for="pages" class="col-sm-1 col-form-label">Páginas</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="pages" name="pages" placeholder="Nº de páginas"
+							[(ngModel)]="livro.pages" #pages="ngModel" required>
+					</div>
+					<div class="col-sm-2" [hidden]="title.valid || title.pristine" style="color:red;"> Campo obrigatório
+					</div>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<div class="col-md-2 offset-md-10">
+						<button
+							type="submit" [disabled]="!livroForm.form.valid" class="btn btn-lg"
+							[ngClass]="{'btn-success': livroForm.form.valid, 'btn-light': !livroForm.form.valid}">
+								<span *ngIf="!livro.id">Cadastrar</span>
+								<span *ngIf="livro.id">Atualizar</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="container container-mensagem" *ngSwitchCase="cadastroLivrosEnum.MENSAGEM_SUCESSO">
+			<div class="row justify-content-md-center">
+				<h2 class="mensagem-sucesso">Cadastro realizado com sucesso!</h2>
+			</div>
+			<div class="row justify-content-md-center">
+					<button type="button" class="btn btn-lg btn-primary" routerLink="/dashboard">
+						Voltar
+					</button>
+			</div>
+		</div>
+		<div class="container container-mensagem" *ngSwitchCase="cadastroLivrosEnum.MENSAGEM_ERRO">
+			<div class="row justify-content-md-center">
+				<h2>Erro ao tentar realizar o cadastro</h2>
+			</div>
+			<div class="row justify-content-md-center">
+				<pre>{{ msgErro.message }}</pre>
+			</div>
+			<div class="row justify-content-md-center">
+				<button type="button" class="btn btn-lg btn-primary" routerLink="/dashboard">
+					Voltar
+				</button>
+				<button type="button" class="btn btn-lg btn-primary" (click)="tentarNovamente()" style="margin-left: 20px;">
+					Tentar novamente
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

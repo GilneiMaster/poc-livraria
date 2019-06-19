@@ -1,0 +1,130 @@
+<div class="container margem-container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Aluguel de Livros</h2>
+		</div>
+	</div>
+	<hr>
+	<div class="row" [ngSwitch]="controleTela">
+		<div class="container container-cadastro" *ngSwitchCase="aluguelLivrosEnum.FORMULARIO_CADASTRO">
+			<form #aluguelForm="ngForm">
+				<div class="form-group row">
+					<label for="cliente" class="col-sm-2 col-form-label">Cliente</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="cliente" name="cliente" placeholder="Selecione o cliente"
+							[(ngModel)]="clienteSelecionado" #cliente="ngModel" [disabled]="desabilitaCliente">
+							<option value="" selected>Selecione o cliente</option>
+							<option [value]="cliente.id" *ngFor="let cliente of clientes;">{{ cliente.nome }}</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<button type="button" [disabled]="!clienteSelecionado" class="btn btn-primary"
+							(click)="adicionarCliente()">
+							Adicionar
+						</button>
+					</div>
+				</div>
+				<div class="form-group row" *ngIf="locacao.cliente">
+					<div class="col-sm-7"><span>NOME:</span> {{ locacao.cliente.nome}} <span>CPF:</span>
+						{{ locacao.cliente.cpf}}</div>
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-danger btn-sm" (click)="removerCliente(locacao.cliente.id)">
+							Remover
+						</button>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="dataEntrega" class="col-sm-2 col-form-label">Data de entrega</label>
+					<div class="col-sm-4">
+						<input type="date" class="form-control" id="dataEntrega" name="dataEntrega"
+							placeholder="Data de entrega" [(ngModel)]="locacao.dataEntrega" #dataEntrega="ngModel"
+							required>
+					</div>
+					<div class="col-sm-2" [hidden]="dataEntrega.valid || dataEntrega.pristine" style="color:red;"> Campo
+						obrigatório
+					</div>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<label for="livros" class="col-sm-2 col-form-label">Livros</label>
+					<div class="col-sm-7">
+						<select class="form-control" id="livros" name="livros" placeholder="Selecione o livro"
+							[(ngModel)]="livroSelecionado" #livro="ngModel">
+							<option value="" selected>Selecione o livro</option>
+							<option [value]="livro.id" *ngFor="let livro of livros;">{{ livro.title }}</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<button type="button" [disabled]="!livroSelecionado" class="btn btn-primary"
+							(click)="adicionarLivro()">
+							Adicionar
+						</button>
+					</div>
+				</div>
+				<div class="form-group row" *ngIf="locacao.livros.length > 0">
+					<table class="table col-sm-12">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Título</th>
+								<th scope="col">Autor</th>
+								<th scope="col">Ano</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let livro of locacao.livros;">
+								<td>{{ livro.id }}</td>
+								<td>{{ livro.title }}</td>
+								<td>{{ livro.author }}</td>
+								<td>{{ livro.year }}</td>
+								<td>
+									<button type="button" class="btn btn-danger btn-sm" (click)="removerLivro(livro)">
+										Remover
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<div class="col-md-2 offset-md-10">
+						<button type="button" [disabled]="desabilitarBotaoCadastro()" class="btn btn-lg"
+							[ngClass]="{'btn-success': !desabilitarBotaoCadastro(), 'btn-light': desabilitarBotaoCadastro()}"
+							(click)="cadastrarAluguel()">
+							<span>Cadastrar</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="container container-mensagem" *ngSwitchCase="aluguelLivrosEnum.MENSAGEM_SUCESSO">
+			<div class="row justify-content-md-center">
+				<h2 class="mensagem-sucesso">Cadastro realizado com sucesso!</h2>
+			</div>
+			<div class="row justify-content-md-center">
+				<button type="button" class="btn btn-lg btn-primary" routerLink="/dashboard">
+					Voltar
+				</button>
+			</div>
+		</div>
+		<div class="container container-mensagem" *ngSwitchCase="aluguelLivrosEnum.MENSAGEM_ERRO">
+			<div class="row justify-content-md-center">
+				<h2>Erro ao tentar realizar o cadastro</h2>
+			</div>
+			<div class="row justify-content-md-center">
+				<pre>{{ msgErro.message }}</pre>
+			</div>
+			<div class="row justify-content-md-center">
+				<button type="button" class="btn btn-lg btn-primary" routerLink="/dashboard">
+					Voltar
+				</button>
+				<button type="button" class="btn btn-lg btn-primary" (click)="tentarNovamente()"
+					style="margin-left: 20px;">
+					Tentar novamente
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

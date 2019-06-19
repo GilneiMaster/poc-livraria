@@ -1,0 +1,21 @@
+{
+  "name": "livraria-api",
+  "version": "1.0.0",
+  "description": "API responsável pela comunicação entre a aplicação e o banco",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon ./src/index"
+  },
+  "author": "Gilnei Freitas",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "npm": "^6.9.0"
+  }
+}

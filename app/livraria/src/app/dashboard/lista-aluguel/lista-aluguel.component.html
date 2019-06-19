@@ -1,0 +1,42 @@
+<app-modal>
+	<h3 txtTitulo>Devolução de livro</h3>
+	<p txtMensagem>O cliente está devolvendo {{ livroSelecionado.title }}?</p>
+
+	<button btnBotoes type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+	<button btnBotoes type="button" class="btn btn-danger" data-dismiss="modal"
+		(click)="devolverLivro()">Devolver</button>
+</app-modal>
+<div class="container margem-container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Livros alugados</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<app-tabela>
+				<thead tbCabecalho>
+					<tr>
+						<th scope="col" *ngFor="let label of cabecalho;">{{ label }}</th>
+					</tr>
+				</thead>
+				<tbody tbCorpo>
+					<tr *ngFor="let locacao of listaLivrosAlugados;">
+						<td>{{ locacao.id }}</td>
+						<td>{{ locacao.cliente.nome }}</td>
+						<td>
+							<div class="row linha-livro" *ngFor="let livro of locacao.livros">
+								<div class="col-md-8"> {{ livro.title }} </div>
+								<div class="col-md-4">
+									<button class="btn btn-outline-primary btn-sm margem-botao-devolucao" 
+									data-toggle="modal" data-target="#modal" 
+									(click)="selecionarLivroDevolucao(livro);">Devolver</button>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</app-tabela>
+		</div>
+	</div>
+</div>

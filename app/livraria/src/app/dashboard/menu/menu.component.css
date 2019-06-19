@@ -1,0 +1,5 @@
+li.selecionado  > a.active{
+    background-color: #6c757d45;
+    border-radius: 5px;
+    font-weight: bold;
+}

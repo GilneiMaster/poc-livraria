@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #f5f5f5;
+}
+
+.margem-container{
+    margin-top:50px;
+}
+
+.margem-direita-botao {
+    margin-right:10px;
+}

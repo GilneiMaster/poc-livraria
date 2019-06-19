@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  api:
+    build:
+      "./api"
+    container_name: api-container
+    volumes:
+      - ./api:/home/livraria/api
+    ports:
+      - "9001:9001"
+    restart: always
+  app:
+    build:
+      "./app"
+    container_name: app-container
+    volumes:
+      - ./app/livraria:/home/livraria/app
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
+    restart: always

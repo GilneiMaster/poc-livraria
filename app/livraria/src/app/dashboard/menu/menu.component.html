@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/dashboard">Livraria SoftDesign</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Lista de livros</a>
+            </li>
+            <li class="nav-item selecionado">
+                <a class="nav-link" routerLink="/dashboard/livros-alugados" routerLinkActive="active">Livros
+                    alugados</a>
+            </li>
+            <li class="nav-item selecionado">
+                <a class="nav-link" routerLink="/dashboard/cadastro-livros" routerLinkActive="active">Cadastro de
+                    livros</a>
+            </li>
+            <li class="nav-item selecionado">
+                <a class="nav-link" routerLink="/dashboard/aluguel-livros" routerLinkActive="active">Aluguel de
+                    livros</a>
+            </li>
+            <li class="nav-item selecionado">
+                <a class="nav-link" (click)="sair()">Sair</a>
+            </li>
+        </ul>
+    </div>
+</nav>

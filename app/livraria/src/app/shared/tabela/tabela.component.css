@@ -1,0 +1,10 @@
+.tabela-container {
+    background-color:#fff;
+    margin-top:20px;
+}
+
+.tabela{
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: auto;
+}

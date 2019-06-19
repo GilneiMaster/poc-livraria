@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="titulo">
+				Livraria SoftDesign
+			</h1>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-4">
+			<img class="imagem" src="../../assets/images/livros.png" alt="logo">
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="col-md-4">
+			<form #loginForm="ngForm" (ngSubmit)="logar()" >
+				<div class="form-group">
+					<label class="col-md-4">Login</label>
+					<input type="text" class="form-control" id="email" name="email" placeholder="E-mail"
+							[(ngModel)]="usuario.email" #email="ngModel" required>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4">Senha</label>
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha"
+							[(ngModel)]="usuario.senha" #senha="ngModel" required>
+				</div>
+				<div class="form-group">
+					<button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Entrar</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</div>
