@@ -1,7 +1,5 @@
 # projeto livraria
 
-Este projeto tem como finalidade, participar do processo seletivo da empresa SoftDesign
-
 Funcionalidades:
 1) Login
 - Tela inicial deve ser o login
